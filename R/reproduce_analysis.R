@@ -661,3 +661,8 @@ if (file.exists(py_table_path)) {
 cat("\n=================================================================\n")
 cat(" MODULE 5 R REPRODUCIBILITY COMPLETED SUCCESSFULLY\n")
 cat("=================================================================\n")
+
+# Clean up default R graphics artifact if generated
+if (file.exists("Rplots.pdf")) {
+  unlink("Rplots.pdf")
+}

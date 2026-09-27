@@ -123,6 +123,12 @@ def run_pipeline() -> None:
         if r_script_path.exists():
             print("\n[PIPELINE] Running Stage 5: Independent R Reproduction...")
             subprocess.run([rscript_cmd, str(r_script_path)], check=False)
+            rplots_file = project_root / "Rplots.pdf"
+            if rplots_file.exists():
+                try:
+                    rplots_file.unlink()
+                except OSError:
+                    pass
     
     print("\n" + "=" * 65)
     print(" PIPELINE EXECUTION FINISHED SUCCESSFULLY")

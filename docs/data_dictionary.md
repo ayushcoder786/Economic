@@ -99,9 +99,9 @@ This data dictionary provides comprehensive documentation for the harmonized ana
 ### 7. `Per_Capita_Income`
 - **Variable Name:** `Per_Capita_Income`
 - **Data Type:** Float64 (Numeric)
-- **Meaning:** Per Capita Net State Domestic Product (NSDP) at **Constant (2011-12) Prices**. Measures real economic output per resident, adjusted for inflation using the 2011-12 base year price deflator.
+- **Meaning:** Per Capita Net State Domestic Product (NSDP) at **Current Prices (2011-12 Series)**. Measures nominal economic output per resident in current Indian Rupees.
 - **Unit:** Indian Rupees (₹ / INR per person per year).
-- **Source:** Reserve Bank of India (RBI) *Handbook of Statistics on Indian States* Table on Per Capita NSDP at Constant Prices & MoSPI NAD.
+- **Source:** Reserve Bank of India (RBI) *Handbook of Statistics on Indian States* (Publication ID: 23468, Table: *Per Capita Net State Domestic Product at Current Prices*).
 - **Year Coverage:** 2011-12 to 2024-25.
 - **Transformations:**
   - Stripped Indian comma groupers (e.g. `'1,06,085'` $\rightarrow$ `106085.0`).

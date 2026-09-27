@@ -30,7 +30,7 @@ This report provides the complete verification audit for the cleaning and mergin
 | **States in Metadata Registry** | 36 | All 36 States/UTs of India |
 | **Matched States** | 34 | 100% of income states successfully matched |
 | **Unmatched Income States** | [] | None (0 unmatched) |
-| **Unmatched Metadata States** | Dadra and Nagar Haveli and Daman and Diu, Lakshadweep | Lakshadweep, Dadra & Nagar Haveli (Expected per MoSPI policy) |
+| **Unmatched Metadata States** | Lakshadweep, Dadra and Nagar Haveli and Daman and Diu | Lakshadweep, Dadra & Nagar Haveli (Expected per MoSPI policy) |
 
 > [!NOTE]
 > **Why are Dadra & Nagar Haveli/Daman & Diu and Lakshadweep in the metadata but not the income series?**  
