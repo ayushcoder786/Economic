@@ -98,9 +98,25 @@ def run_pipeline() -> None:
     # Stage 4: Visualization
     run_visualization_step()
     
+    # Stage 5: R Reproduction (Independent Verification)
+    import shutil
+    import subprocess
+    rscript_cmd = shutil.which("Rscript")
+    if not rscript_cmd:
+        user_r = Path(r"C:\Users\Ayush\AppData\Local\Programs\R\R-4.6.1\bin\Rscript.exe")
+        if user_r.exists():
+            rscript_cmd = str(user_r)
+            
+    if rscript_cmd:
+        r_script_path = project_root / "R" / "reproduce_analysis.R"
+        if r_script_path.exists():
+            print("\n[PIPELINE] Running Stage 5: Independent R Reproduction...")
+            subprocess.run([rscript_cmd, str(r_script_path)], check=False)
+    
     print("\n" + "=" * 65)
     print(" PIPELINE EXECUTION FINISHED SUCCESSFULLY")
     print(" Check outputs/figures/ and outputs/tables/ for generated deliverables.")
+    print(" Check outputs/figures/r/ and outputs/tables/r/ for R replications.")
     print("=" * 65 + "\n")
 
 

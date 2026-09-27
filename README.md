@@ -1,7 +1,7 @@
 # An Economic Data Pipeline: Indian State-Wise Per-Capita Income Divergence (Post-2011)
 
 [![Python 3.9+](https://img.shields.io/badge/Python-3.9%2B-blue.svg)](https://www.python.org/)
-[![Status](https://img.shields.io/badge/Module%204-Visualizations%20Completed-brightgreen.svg)]()
+[![Status](https://img.shields.io/badge/Module%205-R%20Reproduction%20Completed-brightgreen.svg)]()
 [![Reproducibility](https://img.shields.io/badge/Reproducibility-Cross--Language%20(Python%20%2B%20R)-orange.svg)]()
 
 ---
@@ -97,6 +97,7 @@ Project/
 ├── R/                       # Independent cross-validation scripts
 │   ├── .gitkeep
 │   ├── README.md
+│   ├── reproduce_analysis.R # Primary Module 5 R reproduction & verification pipeline
 │   └── reproduce_divergence.R
 │
 ├── outputs/                 # Final deliverables
@@ -106,18 +107,21 @@ Project/
 │   │   ├── figure3_percentage_growth_by_state.png
 │   │   ├── figure4_income_distribution_boxplots.png
 │   │   ├── figure5_income_gap_and_divergence.png
-│   │   └── figure6_state_rank_changes.png
+│   │   ├── figure6_state_rank_changes.png
+│   │   └── r/               # Independent R ggplot2 replications (Figures 1 to 6)
 │   └── tables/              # Summary and econometric tables (.csv)
 │       ├── table_annual_distribution_metrics.csv
 │       ├── table_state_growth_summary.csv
 │       ├── table_state_rankings_2011_vs_2023.csv
-│       └── table_regional_zone_summary.csv
+│       ├── table_regional_zone_summary.csv
+│       └── r/               # Independent R summary & cross-language difference tables
 │
 ├── docs/                    # Theoretical and methodological documentation
 │   ├── data_dictionary.md   # Definitions of economic variables & base years
 │   ├── methodology_divergence.md # Econometric models, formulas & viva Q&A
 │   ├── data_quality_report.md    # Module 3 data audit & verification log
-│   └── visualization_analysis_notes.md # Module 4 empirical findings & figure breakdowns
+│   ├── visualization_analysis_notes.md # Module 4 empirical findings & figure breakdowns
+│   └── cross_language_reproducibility_report.md # Module 5 Python vs R validation report
 │
 ├── requirements.txt         # Required Python packages
 ├── .gitignore               # Git rules excluding caches, environments & artifacts
@@ -191,7 +195,26 @@ Module 4 produces publication-grade, reproducible visualizations (saved at 300 D
 
 ---
 
-## 6. Academic Data Integrity
+## 6. Module 5: Cross-Language Verification & R Replication
+
+To ensure scientific reproducibility, the empirical findings were independently computed using R (4.6.1) with `tidyverse` (`readr`, `dplyr`, `tidyr`, `ggplot2`, `scales`):
+
+### Execution Command:
+```bash
+Rscript R/reproduce_analysis.R
+```
+
+### Key Verification Metrics:
+- **Numerical Convergence:** Annual medians, CAGR, state % growth, and ordinal rankings in R are **100% identical** to Python.
+- **Max Absolute Discrepancy:** Less than ₹0.005 for annual mean and 0.000048 for Coefficient of Variation ($CV$), attributable solely to floating-point formatting and CSV export precision.
+- **R Visualizations:** 6 equivalent figures saved at 300 DPI in `outputs/figures/r/`.
+- **R Analytical Tables:** 5 summary and reconciliation tables saved in `outputs/tables/r/`.
+
+*For detailed line-by-line reconciliation and algorithmic notes, see [docs/cross_language_reproducibility_report.md](file:///c:/Users/Ayush/Desktop/Project/docs/cross_language_reproducibility_report.md).*
+
+---
+
+## 7. Academic Data Integrity
 In accordance with ethical academic research standards:
 - **No data fabrication:** This project does not generate synthetic or fictitious economic numbers.
 - **Official Sources:** Real historical series are sourced directly from:
@@ -201,7 +224,7 @@ In accordance with ethical academic research standards:
 
 ---
 
-## 7. Viva Defense Cheat Sheet
+## 8. Viva Defense Cheat Sheet
 
 | Question | Short Viva Answer |
 | :--- | :--- |

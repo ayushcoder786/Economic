@@ -25,6 +25,7 @@ dist/
 .RData
 .Ruserdata
 .Rproj.user/
+Rplots.pdf
 
 # Operating System specific files
 .DS_Store
