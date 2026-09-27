@@ -1,0 +1,33 @@
+Rank_2023,Rank_2011,Rank_Change,State,Region_Zone,Category,Per_Capita_Income_2011-12,Per_Capita_Income_2023-24,Absolute_Growth_INR,Percentage_Growth_Pct,CAGR_Pct
+1,4,3,Sikkim,North-Eastern,State,158667.0,587743.0,429076.0,270.43,11.53
+2,1,-1,Goa,Western,State,259444.0,585953.0,326509.0,125.85,7.02
+3,2,-1,Delhi,Northern,Union Territory,185001.0,459408.0,274407.0,148.33,7.87
+4,3,-1,Chandigarh,Northern,Union Territory,158967.0,453457.0,294490.0,185.25,9.13
+5,11,6,Telangana,Southern,State,91121.0,347714.0,256593.0,281.6,11.81
+6,12,6,Karnataka,Southern,State,90263.0,339813.0,249550.0,276.47,11.68
+7,6,-1,Haryana,Northern,State,106085.0,319363.0,213278.0,201.04,9.62
+8,10,2,Tamil Nadu,Southern,State,93112.0,313329.0,220217.0,236.51,10.64
+9,9,0,Kerala,Southern,State,97912.0,281269.0,183357.0,187.27,9.19
+10,8,-2,Maharashtra,Western,State,99597.0,278681.0,179084.0,179.81,8.95
+11,13,2,Andaman and Nicobar Islands,Southern,Union Territory,89100.0,276000.0,186900.0,209.76,9.88
+12,5,-7,Puducherry,Southern,Union Territory,119649.0,252164.0,132515.0,110.75,6.41
+13,7,-6,Uttarakhand,Central,State,100314.0,246178.0,145864.0,145.41,7.77
+14,17,3,Andhra Pradesh,Southern,State,69000.0,237951.0,168951.0,244.86,10.87
+15,19,4,Mizoram,North-Eastern,State,57654.0,234996.0,177342.0,307.6,12.42
+16,14,-2,Himachal Pradesh,Northern,State,87721.0,234721.0,147000.0,167.58,8.55
+17,16,-1,Arunachal Pradesh,North-Eastern,State,73540.0,217325.0,143785.0,195.52,9.45
+18,15,-3,Punjab,Northern,State,85577.0,205374.0,119797.0,139.99,7.57
+19,26,7,Tripura,North-Eastern,State,47155.0,172299.0,125144.0,265.39,11.4
+20,20,0,Rajasthan,Northern,State,57192.0,166647.0,109455.0,191.38,9.32
+21,22,1,Nagaland,North-Eastern,State,53010.0,154828.0,101818.0,192.07,9.34
+22,25,3,Odisha,Eastern,State,48387.0,150414.0,102027.0,210.86,9.91
+23,24,1,West Bengal,Eastern,State,51543.0,149515.0,97972.0,190.08,9.28
+24,21,-3,Chhattisgarh,Central,State,55177.0,148922.0,93745.0,169.9,8.63
+25,28,3,Assam,North-Eastern,State,41142.0,143852.0,102710.0,249.65,10.99
+26,18,-8,Meghalaya,North-Eastern,State,59794.0,141195.0,81401.0,136.14,7.42
+27,23,-4,Jammu and Kashmir,Northern,Union Territory,51775.0,140051.0,88276.0,170.5,8.65
+28,30,2,Madhya Pradesh,Central,State,38497.0,139713.0,101216.0,262.92,11.34
+29,29,0,Manipur,North-Eastern,State,39762.0,119938.0,80176.0,201.64,9.64
+30,27,-3,Jharkhand,Eastern,State,41254.0,106529.0,65275.0,158.23,8.23
+31,31,0,Uttar Pradesh,Central,State,32648.0,97364.0,64716.0,198.22,9.53
+32,32,0,Bihar,Eastern,State,21750.0,62201.0,40451.0,185.98,9.15

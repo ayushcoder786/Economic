@@ -1,7 +1,7 @@
 # An Economic Data Pipeline: Indian State-Wise Per-Capita Income Divergence (Post-2011)
 
 [![Python 3.9+](https://img.shields.io/badge/Python-3.9%2B-blue.svg)](https://www.python.org/)
-[![Status](https://img.shields.io/badge/Module%203-Data%20Cleaning%20%26%20Merging%20Completed-brightgreen.svg)]()
+[![Status](https://img.shields.io/badge/Module%204-Visualizations%20Completed-brightgreen.svg)]()
 [![Reproducibility](https://img.shields.io/badge/Reproducibility-Cross--Language%20(Python%20%2B%20R)-orange.svg)]()
 
 ---
@@ -101,11 +101,23 @@ Project/
 │
 ├── outputs/                 # Final deliverables
 │   ├── figures/             # High-resolution charts (.png at 300 dpi)
+│   │   ├── figure1_state_income_trajectories.png
+│   │   ├── figure2_selected_states_comparison.png
+│   │   ├── figure3_percentage_growth_by_state.png
+│   │   ├── figure4_income_distribution_boxplots.png
+│   │   ├── figure5_income_gap_and_divergence.png
+│   │   └── figure6_state_rank_changes.png
 │   └── tables/              # Summary and econometric tables (.csv)
+│       ├── table_annual_distribution_metrics.csv
+│       ├── table_state_growth_summary.csv
+│       ├── table_state_rankings_2011_vs_2023.csv
+│       └── table_regional_zone_summary.csv
 │
 ├── docs/                    # Theoretical and methodological documentation
 │   ├── data_dictionary.md   # Definitions of economic variables & base years
-│   └── methodology_divergence.md # Econometric models, formulas & viva Q&A
+│   ├── methodology_divergence.md # Econometric models, formulas & viva Q&A
+│   ├── data_quality_report.md    # Module 3 data audit & verification log
+│   └── visualization_analysis_notes.md # Module 4 empirical findings & figure breakdowns
 │
 ├── requirements.txt         # Required Python packages
 ├── .gitignore               # Git rules excluding caches, environments & artifacts
@@ -155,7 +167,31 @@ python python/visualize.py
 
 ---
 
-## 5. Academic Data Integrity
+## 5. Module 4: Empirical Visualizations & Findings
+
+Module 4 produces publication-grade, reproducible visualizations (saved at 300 DPI in `outputs/figures/`) and structured analytical tables (`outputs/tables/`) answering the core research question:
+
+### Visual Deliverables (`outputs/figures/`)
+| Figure | Name | Description & Focus |
+| :--- | :--- | :--- |
+| **Figure 1** | `figure1_state_income_trajectories.png` | Complete panel trajectories (2011-12 to 2024-25) highlighting macro-states against the national interstate mean. |
+| **Figure 2** | `figure2_selected_states_comparison.png` | Dual-panel comparison of 8 representative states across income tiers, featuring indexed growth trajectories ($2011\text{-}12 = 100$). |
+| **Figure 3** | `figure3_percentage_growth_by_state.png` | Cumulative percentage growth and CAGR by state, grouped and color-coded by official Zonal Council regions. |
+| **Figure 4** | `figure4_income_distribution_boxplots.png` | Milestone cross-sectional boxplots (2011-12, 2015-16, 2019-20, 2023-24) revealing widening Interquartile Range (IQR). |
+| **Figure 5** | `figure5_income_gap_and_divergence.png` | Dual-panel $\sigma$-divergence testing: annual Interstate Coefficient of Variation ($CV = \sigma / \mu$) and $P_{90} / P_{10}$ decile disparity ratio. |
+| **Figure 6** | `figure6_state_rank_changes.png` | Ordinal rank mobility slopegraph tracking state position shifts between 2011-12 and 2023-24 (without political/value judgments). |
+
+### Analytical Tables (`outputs/tables/`)
+- **`table_annual_distribution_metrics.csv`:** Longitudinal series of mean, median, standard deviation, CV, P90, P10, and ratio metrics across 14 financial years.
+- **`table_state_growth_summary.csv`:** Full 32-state panel summary of baseline income, end-period income, cumulative % growth, and annualized CAGR.
+- **`table_state_rankings_2011_vs_2023.csv`:** Neutral rank change comparison, absolute income change (₹ INR), and relative mobility.
+- **`table_regional_zone_summary.csv`:** Zonal Council aggregation contrasting Southern, Western, Northern, Eastern, Central, and North-Eastern economic performance.
+
+*For complete econometric analysis and epistemological breakdown, see [docs/visualization_analysis_notes.md](file:///c:/Users/Ayush/Desktop/Project/docs/visualization_analysis_notes.md).*
+
+---
+
+## 6. Academic Data Integrity
 In accordance with ethical academic research standards:
 - **No data fabrication:** This project does not generate synthetic or fictitious economic numbers.
 - **Official Sources:** Real historical series are sourced directly from:
@@ -165,7 +201,7 @@ In accordance with ethical academic research standards:
 
 ---
 
-## 6. Viva Defense Cheat Sheet
+## 7. Viva Defense Cheat Sheet
 
 | Question | Short Viva Answer |
 | :--- | :--- |
