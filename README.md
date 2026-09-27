@@ -1,7 +1,7 @@
 # An Economic Data Pipeline: Indian State-Wise Per-Capita Income Divergence (Post-2011)
 
 [![Python 3.9+](https://img.shields.io/badge/Python-3.9%2B-blue.svg)](https://www.python.org/)
-[![Status](https://img.shields.io/badge/Module%201-Structure%20%26%20Core%20Code-brightgreen.svg)]()
+[![Status](https://img.shields.io/badge/Module%202-NumPy%20Computation%20Completed-brightgreen.svg)]()
 [![Reproducibility](https://img.shields.io/badge/Reproducibility-Cross--Language%20(Python%20%2B%20R)-orange.svg)]()
 
 ---
@@ -84,10 +84,12 @@ Project/
 │   └── README.md
 │
 ├── python/                  # Modular Python source code
-│   ├── __init__.py          # Package initialization
+│   ├── __init__.py          # Package initialization (exports Module 2 NumPy functions)
 │   ├── utils.py             # Cross-platform paths (pathlib) & helper utilities
 │   ├── download_data.py     # Data verification, guide, & provenance manifest
 │   ├── clean_data.py        # Harmonization, state renaming, and panel formatting
+│   ├── numpy_metrics.py     # Vectorized NumPy functions (Module 2: CAGR, CV, growth rates)
+│   ├── test_numpy_metrics.py# Comprehensive unit test suite with synthetic data
 │   ├── analysis.py          # σ-convergence (CV) and β-convergence (CAGR) metrics
 │   ├── visualize.py         # Publication-grade Matplotlib/Seaborn figures
 │   └── main.py              # Master pipeline orchestrator
