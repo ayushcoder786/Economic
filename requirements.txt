@@ -1,0 +1,17 @@
+# Core Economic Data Pipeline Dependencies
+# Python >= 3.9 recommended
+
+# Data handling and panel data transformation
+pandas>=2.0.0
+numpy>=1.24.0
+openpyxl>=3.1.0
+
+# Statistical and econometric computation
+scipy>=1.10.0
+
+# Publication-grade economic visualizations
+matplotlib>=3.7.0
+seaborn>=0.12.0
+
+# HTTP requests and data acquisition
+requests>=2.31.0

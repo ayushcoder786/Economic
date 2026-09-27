@@ -1,0 +1,28 @@
+{
+    "project_title": "An Economic Data Pipeline: Indian State-wise Per-Capita Income Divergence",
+    "research_question": "How has state-wise per-capita income diverged in India since 2011?",
+    "base_year": "2011-12",
+    "metric": "Per Capita Net State Domestic Product (NSDP) at Constant (2011-12) Prices in Indian Rupees (INR)",
+    "sources": [
+        {
+            "institution": "Reserve Bank of India (RBI)",
+            "publication": "Handbook of Statistics on Indian States",
+            "table_name": "Per Capita Net State Domestic Product - Constant Prices (Base 2011-12)",
+            "url": "https://dbie.rbi.org.in",
+            "notes": "Annual publication reporting state domestic product and per capita statistics."
+        },
+        {
+            "institution": "Ministry of Statistics and Programme Implementation (MoSPI)",
+            "division": "National Accounts Division (NAD)",
+            "table_name": "State Domestic Product and Per Capita Income Series",
+            "url": "https://www.mospi.gov.in",
+            "notes": "Primary official statistical authority of the Government of India."
+        }
+    ],
+    "expected_columns": [
+        "State",
+        "Financial_Year",
+        "Per_Capita_NSDP_INR"
+    ],
+    "time_horizon": "2011-12 to present (or latest available fiscal year)"
+}
