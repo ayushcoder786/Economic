@@ -1,4 +1,8 @@
-# Python artifacts
+# ==============================================================================
+# .gitignore - Comprehensive Exclusion Rules for Economic Data Pipeline
+# ==============================================================================
+
+# Python bytecode and cache
 __pycache__/
 *.py[cod]
 *$py.class
@@ -6,6 +10,8 @@ __pycache__/
 .pytest_cache/
 .coverage
 htmlcov/
+.mypy_cache/
+.ruff_cache/
 
 # Virtual environments
 .venv/
@@ -16,7 +22,21 @@ build/
 dist/
 *.egg-info/
 
-# Jupyter Notebooks
+# Environment variables, credentials, and secrets
+.env
+.env.*
+*.env
+*.pem
+*.key
+*.cert
+*.crt
+*.pfx
+secrets.json
+credentials.json
+token.json
+client_secrets.json
+
+# Jupyter Notebook checkpoints
 .ipynb_checkpoints/
 *-checkpoint.ipynb
 
@@ -26,6 +46,22 @@ dist/
 .Ruserdata
 .Rproj.user/
 Rplots.pdf
+downloaded_packages/
+Rtmp*/
+
+# Large temporary files and editor caches
+scratch/
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+*~
+*.log
+*.tar
+*.gz
+*.zip
+*.7z
 
 # Operating System specific files
 .DS_Store
@@ -33,13 +69,8 @@ Thumbs.db
 ehthumbs.db
 [Dd]esktop.ini
 
-# IDE / Editor configurations
+# IDE and Editor configurations
 .vscode/
 .idea/
 *.sublime-project
 *.sublime-workspace
-
-# Temporary / Scratch files
-scratch/
-*.tmp
-*.log

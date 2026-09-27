@@ -103,9 +103,20 @@ def run_pipeline() -> None:
     import subprocess
     rscript_cmd = shutil.which("Rscript")
     if not rscript_cmd:
-        user_r = Path(r"C:\Users\Ayush\AppData\Local\Programs\R\R-4.6.1\bin\Rscript.exe")
-        if user_r.exists():
-            rscript_cmd = str(user_r)
+        # Dynamically probe standard installation paths without hardcoding user names
+        potential_r_roots = [
+            Path.home() / "AppData" / "Local" / "Programs" / "R",
+            Path("C:/Program Files/R"),
+            Path("C:/Program Files (x86)/R"),
+        ]
+        for r_root in potential_r_roots:
+            if r_root.exists():
+                for candidate in r_root.glob("**/Rscript.exe"):
+                    if candidate.is_file():
+                        rscript_cmd = str(candidate)
+                        break
+            if rscript_cmd:
+                break
             
     if rscript_cmd:
         r_script_path = project_root / "R" / "reproduce_analysis.R"
