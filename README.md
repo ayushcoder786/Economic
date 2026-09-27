@@ -105,6 +105,11 @@ Project/
 │       ├── data_quality_summary.csv            # Per-state observation completeness audit
 │       └── README.md
 │
+├── notebooks/                           # Interactive exploratory data analysis & deep dive
+│   ├── 01_exploratory_inspection.ipynb  # Initial data inspection & distribution plots
+│   ├── 02_divergence_deep_dive.ipynb    # Econometric convergence analysis & inline figures
+│   └── README.md
+│
 ├── python/                              # Modular Python source code
 │   ├── __init__.py                      # Package exports
 │   ├── utils.py                         # Cross-platform pathlib helpers & banners
@@ -114,6 +119,7 @@ Project/
 │   ├── test_numpy_metrics.py            # Automated unit tests on synthetic data (11/11 passing)
 │   ├── analysis.py                      # Statistical distribution & growth tables
 │   ├── visualize.py                     # Publication-grade Matplotlib/Seaborn figures (Figures 1 to 6)
+│   ├── generate_notebooks.py            # Programmatic Jupyter notebook builder & executor
 │   └── main.py                          # Master end-to-end pipeline orchestrator
 │
 ├── R/                                   # Independent R reproduction scripts
