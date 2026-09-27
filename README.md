@@ -1,7 +1,7 @@
 # An Economic Data Pipeline: Indian State-Wise Per-Capita Income Divergence (Post-2011)
 
 [![Python 3.9+](https://img.shields.io/badge/Python-3.9%2B-blue.svg)](https://www.python.org/)
-[![Status](https://img.shields.io/badge/Module%202-NumPy%20Computation%20Completed-brightgreen.svg)]()
+[![Status](https://img.shields.io/badge/Module%203-Data%20Cleaning%20%26%20Merging%20Completed-brightgreen.svg)]()
 [![Reproducibility](https://img.shields.io/badge/Reproducibility-Cross--Language%20(Python%20%2B%20R)-orange.svg)]()
 
 ---

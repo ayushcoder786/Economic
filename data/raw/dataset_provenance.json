@@ -1,28 +1,32 @@
 {
     "project_title": "An Economic Data Pipeline: Indian State-wise Per-Capita Income Divergence",
     "research_question": "How has state-wise per-capita income diverged in India since 2011?",
+    "module": "Module 3: Clean and Merge Data",
     "base_year": "2011-12",
     "metric": "Per Capita Net State Domestic Product (NSDP) at Constant (2011-12) Prices in Indian Rupees (INR)",
-    "sources": [
+    "datasets": [
         {
+            "file": "raw_rbi_per_capita_nsdp.csv",
             "institution": "Reserve Bank of India (RBI)",
             "publication": "Handbook of Statistics on Indian States",
             "table_name": "Per Capita Net State Domestic Product - Constant Prices (Base 2011-12)",
+            "publication_id": "23468",
             "url": "https://dbie.rbi.org.in",
-            "notes": "Annual publication reporting state domestic product and per capita statistics."
+            "notes": "State-wise time series covering 34 States and UTs from FY 2011-12 to FY 2024-25."
         },
         {
-            "institution": "Ministry of Statistics and Programme Implementation (MoSPI)",
-            "division": "National Accounts Division (NAD)",
-            "table_name": "State Domestic Product and Per Capita Income Series",
-            "url": "https://www.mospi.gov.in",
-            "notes": "Primary official statistical authority of the Government of India."
+            "file": "raw_state_regional_metadata.csv",
+            "institution": "Ministry of Home Affairs / NITI Aayog",
+            "table_name": "Zonal Council Classification & ISO 3166-2:IN Registry",
+            "url": "https://www.mha.gov.in",
+            "notes": "Official regional zones (Northern, Southern, Western, Eastern, Central, North-Eastern) and administrative category (State vs. UT)."
         }
     ],
-    "expected_columns": [
-        "State",
-        "Financial_Year",
-        "Per_Capita_NSDP_INR"
-    ],
-    "time_horizon": "2011-12 to present (or latest available fiscal year)"
+    "time_horizon": "2011-12 through 2024-25 (14 fiscal years)",
+    "coverage": "34 Indian States & Union Territories",
+    "integrity_rules": [
+        "Raw files in data/raw/ are immutable and read-only.",
+        "No data points are fabricated.",
+        "Missing values are preserved transparently without silent deletion."
+    ]
 }

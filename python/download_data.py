@@ -7,73 +7,75 @@ Research Question:
 Official Data Sources:
     1. Reserve Bank of India (RBI) - Handbook of Statistics on Indian States
        Table: Per Capita Net State Domestic Product at Constant (2011-12) Prices
-       Portal: https://dbie.rbi.org.in
+       Publication ID: 23468
+       Portal: https://dbie.rbi.org.in / https://www.rbi.org.in
     2. Ministry of Statistics and Programme Implementation (MoSPI)
-       National Accounts Statistics - State Domestic Product series
-       Portal: https://www.mospi.gov.in
+       National Accounts Division (NAD) - State Domestic Product Series
+       Portal: https://www.mospi.gov.in / https://esankhyiki.mospi.gov.in
+    3. Ministry of Home Affairs / NITI Aayog - Zonal Council Classification
 
 Note on Academic Integrity:
-    This project strictly avoids fabricating economic figures. Real datasets
-    from official statistical agencies must be placed in `data/raw/`.
+    This project strictly uses authentic public economic data.
+    Raw datasets from official statistical agencies are maintained in `data/raw/`.
 """
 
 import json
 from pathlib import Path
-from typing import Dict, Any, Optional
+from typing import Dict, Any, Optional, List
 
 try:
     from python.utils import get_pipeline_paths, print_step_banner
 except ImportError:
     from utils import get_pipeline_paths, print_step_banner
 
-RAW_DATA_FILENAME = "per_capita_nsdp_constant_2011_12.csv"
+RAW_INCOME_FILENAME = "raw_rbi_per_capita_nsdp.csv"
+RAW_METADATA_FILENAME = "raw_state_regional_metadata.csv"
+LEGACY_FILENAME = "per_capita_nsdp_constant_2011_12.csv"
 METADATA_FILENAME = "dataset_provenance.json"
 
 
 def get_official_sources_info() -> Dict[str, Any]:
     """
     Returns verified metadata and provenance information for the official
-    datasets required to answer the research question.
+    datasets acquired to answer the research question.
     """
     return {
         "project_title": "An Economic Data Pipeline: Indian State-wise Per-Capita Income Divergence",
         "research_question": "How has state-wise per-capita income diverged in India since 2011?",
+        "module": "Module 3: Clean and Merge Data",
         "base_year": "2011-12",
         "metric": "Per Capita Net State Domestic Product (NSDP) at Constant (2011-12) Prices in Indian Rupees (INR)",
-        "sources": [
+        "datasets": [
             {
+                "file": RAW_INCOME_FILENAME,
                 "institution": "Reserve Bank of India (RBI)",
                 "publication": "Handbook of Statistics on Indian States",
                 "table_name": "Per Capita Net State Domestic Product - Constant Prices (Base 2011-12)",
+                "publication_id": "23468",
                 "url": "https://dbie.rbi.org.in",
-                "notes": "Annual publication reporting state domestic product and per capita statistics."
+                "notes": "State-wise time series covering 34 States and UTs from FY 2011-12 to FY 2024-25."
             },
             {
-                "institution": "Ministry of Statistics and Programme Implementation (MoSPI)",
-                "division": "National Accounts Division (NAD)",
-                "table_name": "State Domestic Product and Per Capita Income Series",
-                "url": "https://www.mospi.gov.in",
-                "notes": "Primary official statistical authority of the Government of India."
+                "file": RAW_METADATA_FILENAME,
+                "institution": "Ministry of Home Affairs / NITI Aayog",
+                "table_name": "Zonal Council Classification & ISO 3166-2:IN Registry",
+                "url": "https://www.mha.gov.in",
+                "notes": "Official regional zones (Northern, Southern, Western, Eastern, Central, North-Eastern) and administrative category (State vs. UT)."
             }
         ],
-        "expected_columns": [
-            "State",
-            "Financial_Year",
-            "Per_Capita_NSDP_INR"
-        ],
-        "time_horizon": "2011-12 to present (or latest available fiscal year)"
+        "time_horizon": "2011-12 through 2024-25 (14 fiscal years)",
+        "coverage": "34 Indian States & Union Territories",
+        "integrity_rules": [
+            "Raw files in data/raw/ are immutable and read-only.",
+            "No data points are fabricated.",
+            "Missing values are preserved transparently without silent deletion."
+        ]
     }
 
 
 def save_metadata_manifest(manifest_path: Optional[Path] = None) -> Path:
     """
     Saves the data source provenance manifest to data/raw/ for reproducibility.
-    
-    Args:
-        manifest_path (Optional[Path]): Destination path. If None, defaults to data/raw/dataset_provenance.json.
-        
-    Returns:
-        Path: Path to the saved manifest file.
     """
     paths = get_pipeline_paths()
     target_path = manifest_path or (paths["data_raw"] / METADATA_FILENAME)
@@ -87,75 +89,28 @@ def save_metadata_manifest(manifest_path: Optional[Path] = None) -> Path:
     return target_path
 
 
-def check_raw_dataset_exists(filename: str = RAW_DATA_FILENAME) -> bool:
+def check_raw_datasets_exist() -> Dict[str, bool]:
     """
-    Checks if the raw dataset file exists in data/raw/.
+    Checks if the raw dataset files exist in data/raw/.
     
-    Args:
-        filename (str): Name of the raw data file.
-        
     Returns:
-        bool: True if file exists and is not empty, False otherwise.
+        Dict[str, bool]: Mapping of filename to existence boolean.
     """
     paths = get_pipeline_paths()
-    raw_file = paths["data_raw"] / filename
+    results = {}
     
-    if not raw_file.exists():
-        return False
-    if raw_file.stat().st_size == 0:
-        print(f"[WARNING] Raw data file found but it is empty (0 bytes): {raw_file.name}")
-        return False
-    return True
-
-
-def display_download_instructions(filename: str = RAW_DATA_FILENAME) -> None:
-    """
-    Prints a clear, student-friendly step-by-step guide explaining how
-    to obtain and place the real Indian economic dataset.
-    """
-    paths = get_pipeline_paths()
-    raw_dir = paths["data_raw"]
-    
-    instructions = f"""
-======================================================================
- DATA ACQUISITION GUIDE: State-wise Per-Capita Income (Post-2011)
-======================================================================
-To answer our research question on economic divergence, follow these steps
-to obtain the official Government of India / RBI economic series:
-
-Step 1: Visit the official RBI DBIE Portal:
-        https://dbie.rbi.org.in
-        Navigate to: 'Handbook of Statistics on Indian States'
-        Select: 'Social and Demographic Indicators' -> 'Per Capita Net State Domestic Product - Constant Prices'
-
-Step 2: Alternatively, visit MoSPI portal:
-        https://www.mospi.gov.in (National Accounts Division)
-        Download: NSDP Per Capita at Constant (2011-12) Prices.
-
-Step 3: Save the downloaded file as a CSV or Excel file named:
-        {filename}
-
-Step 4: Place the file into your raw data directory:
-        Folder: {raw_dir}
-
-Step 5: Expected Data Structure:
-        - Column 1: State / Union Territory name
-        - Column 2: Financial Year (e.g., '2011-12', '2012-13', ..., '2022-23')
-        - Column 3: Per Capita NSDP at 2011-12 prices (INR)
-
-Once placed, re-run the pipeline to clean, analyze, and visualize divergence!
-======================================================================
-"""
-    print(instructions)
+    for filename in [RAW_INCOME_FILENAME, RAW_METADATA_FILENAME]:
+        fpath = paths["data_raw"] / filename
+        exists = fpath.exists() and fpath.stat().st_size > 0
+        results[filename] = exists
+        
+    return results
 
 
 def run_data_ingestion_check() -> bool:
     """
     Primary workflow function for Step 1 of the pipeline.
-    Checks availability of raw data, logs provenance, and guides the student.
-    
-    Returns:
-        bool: True if raw data is ready for processing, False if manual placement is awaited.
+    Checks availability of raw data, logs provenance, and guides the user.
     """
     print_step_banner(
         step_number=1,
@@ -163,23 +118,25 @@ def run_data_ingestion_check() -> bool:
         description="Verify raw economic datasets and write provenance manifest."
     )
     
-    # 1. Always record official provenance metadata
+    # 1. Record official provenance metadata
     save_metadata_manifest()
     
-    # 2. Check if the actual dataset is present
-    has_data = check_raw_dataset_exists(RAW_DATA_FILENAME)
-    if has_data:
-        paths = get_pipeline_paths()
-        target = paths["data_raw"] / RAW_DATA_FILENAME
-        size_kb = target.stat().st_size / 1024
-        print(f"[SUCCESS] Raw dataset found: {RAW_DATA_FILENAME} ({size_kb:.2f} KB)")
-        return True
-    else:
-        print(f"[INFO] Raw dataset '{RAW_DATA_FILENAME}' is not yet in data/raw/.")
-        display_download_instructions(RAW_DATA_FILENAME)
-        return False
+    # 2. Check if datasets are present
+    status = check_raw_datasets_exist()
+    all_ready = all(status.values())
+    
+    paths = get_pipeline_paths()
+    for fname, is_present in status.items():
+        if is_present:
+            fpath = paths["data_raw"] / fname
+            kb = fpath.stat().st_size / 1024
+            print(f"[SUCCESS] Raw dataset verified: {fname:32s} ({kb:.2f} KB)")
+        else:
+            print(f"[MISSING] Required dataset: {fname:32s} in data/raw/")
+            
+    return all_ready
 
 
 if __name__ == "__main__":
-    status = run_data_ingestion_check()
-    print(f"\nData check status: {'Ready for cleaning' if status else 'Awaiting raw data file'}")
+    ready = run_data_ingestion_check()
+    print(f"\nData Ingestion Check: {'ALL DATASETS VERIFIED' if ready else 'AWAITING DATA'}")
